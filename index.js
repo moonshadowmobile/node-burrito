@@ -45,7 +45,7 @@ var burrito = module.exports = function (code, cb) {
     return deparse(parse(deparse(ast_)), true);
 };
 
-function wrapNode (state, cb) {
+var wrapNode = burrito.wrapNode = function (state, cb) {
     var node = state.node;
     
     var ann = Array.isArray(node) && node[0]
