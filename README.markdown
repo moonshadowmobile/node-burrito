@@ -143,6 +143,16 @@ node.parent()
 
 Returns the parent `node` or `null` if the node is the root element.
 
+node.label()
+------------
+
+Return the label of the present node or `null` if there is no label.
+
+Labels are returned for "call", "var", "defun", and "function" nodes.
+
+Returns an array for "var" nodes since `var` statements can
+contain multiple labels in assignment.
+
 installation
 ============
 
