@@ -5,7 +5,7 @@ exports.callLabel = function () {
     var times = 0;
     var src = burrito('foo(10)', function (node) {
         if (node.name === 'call') {
-            assert.equal(node.label, 'foo');
+            assert.equal(node.label(), 'foo');
             times ++;
         }
     });
@@ -17,7 +17,19 @@ exports.varLabel = function () {
     var times = 0;
     var src = burrito('var x = 2', function (node) {
         if (node.name === 'var') {
-            assert.equal(node.label, 'x');
+            assert.deepEqual(node.label(), [ 'x' ]);
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
+
+exports.varsLabel = function () {
+    var times = 0;
+    var src = burrito('var x = 2, y = 3', function (node) {
+        if (node.name === 'var') {
+            assert.deepEqual(node.label(), [ 'x', 'y' ]);
             times ++;
         }
     });

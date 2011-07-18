@@ -132,7 +132,9 @@ var wrapNode = burrito.wrapNode = function (state, cb) {
         return cache.source;
     };
     
-    self.label = labelOf(self);
+    self.label = function () {
+        return labelOf(self);
+    };
     
     if (cb) cb.call(state, self);
     
@@ -177,7 +179,10 @@ function labelOf (node) {
             return null;
         }
     }
+    else if (node.name === 'var') {
+        return node.value[0].map(function (x) { return x[0] });
+    }
     else {
-        // ...
+        return null;
     }
 }
