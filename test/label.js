@@ -12,3 +12,15 @@ exports.callLabel = function () {
     
     assert.equal(times, 1);
 };
+
+exports.varLabel = function () {
+    var times = 0;
+    var src = burrito('var x = 2', function (node) {
+        if (node.name === 'var') {
+            assert.equal(node.label, 'x');
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
