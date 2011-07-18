@@ -36,3 +36,27 @@ exports.varsLabel = function () {
     
     assert.equal(times, 1);
 };
+
+exports.defunLabel = function () {
+    var times = 0;
+    var src = burrito('function moo () {}', function (node) {
+        if (node.name === 'defun') {
+            assert.deepEqual(node.label(), 'moo');
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
+
+exports.functionLabel = function () {
+    var times = 0;
+    var src = burrito('(function zzz () {})()', function (node) {
+        if (node.name === 'function') {
+            assert.deepEqual(node.label(), 'zzz');
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
