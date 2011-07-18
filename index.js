@@ -133,7 +133,7 @@ var wrapNode = burrito.wrapNode = function (state, cb) {
     };
     
     self.label = function () {
-        return labelOf(self);
+        return burrito.label(self);
     };
     
     if (cb) cb.call(state, self);
@@ -167,7 +167,7 @@ burrito.generateName = function (len) {
 burrito.parse = parse;
 burrito.deparse = deparse;
 
-function labelOf (node) {
+burrito.label = function (node) {
     if (node.name === 'call') {
         if (typeof node.value[0] === 'string') {
             return node.value[0];
@@ -181,6 +181,12 @@ function labelOf (node) {
     }
     else if (node.name === 'var') {
         return node.value[0].map(function (x) { return x[0] });
+    }
+    else if (node.name === 'defun') {
+        
+    }
+    else if (node.name === 'function') {
+        
     }
     else {
         return null;

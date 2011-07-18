@@ -60,3 +60,15 @@ exports.functionLabel = function () {
     
     assert.equal(times, 1);
 };
+
+exports.anonFunctionLabel = function () {
+    var times = 0;
+    var src = burrito('(function () {})()', function (node) {
+        if (node.name === 'function') {
+            assert.ok(node.label() === null);
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
