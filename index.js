@@ -132,6 +132,8 @@ var wrapNode = burrito.wrapNode = function (state, cb) {
         return cache.source;
     };
     
+    self.label = labelOf(self);
+    
     if (cb) cb.call(state, self);
     
     return self;
@@ -162,3 +164,20 @@ burrito.generateName = function (len) {
 
 burrito.parse = parse;
 burrito.deparse = deparse;
+
+function labelOf (node) {
+    if (node.name === 'call') {
+        if (typeof node.value[0] === 'string') {
+            return node.value[0];
+        }
+        else if (node.value[0] && typeof node.value[0][1] === 'string') {
+            return node.value[0][1];
+        }
+        else {
+            return null;
+        }
+    }
+    else {
+        // ...
+    }
+}
