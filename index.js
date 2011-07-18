@@ -183,12 +183,12 @@ burrito.label = function (node) {
         return node.value[0].map(function (x) { return x[0] });
     }
     else if (node.name === 'defun') {
-        
+        return node.value[0];
     }
     else if (node.name === 'function') {
-        
+        return node.value[0];
     }
     else {
         return null;
     }
-}
+};
