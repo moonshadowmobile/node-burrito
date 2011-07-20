@@ -135,8 +135,12 @@ var wrapNode = burrito.wrapNode = function (state, cb) {
     self.label = function () {
         return burrito.label(self);
     };
-    
+
     if (cb) cb.call(state, self);
+
+    if(self.node[0].name === 'conditional') {
+      self.wrap('[%s][0]');
+    }
     
     return self;
 }
