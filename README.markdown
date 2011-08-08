@@ -63,6 +63,10 @@ Given some source `code` and a function `trace`, walk the ast by expression.
 
 The `cb` gets called with a node object described below.
 
+If `code` is an Array then it is assumbed to be an AST which you can generate
+yourself with `burrito.parse()`. The AST must be annotated, so make sure to
+`burrito.parse(src, false, true)`.
+
 burrito.microwave(code, context={}, cb)
 ---------------------------------------
 
