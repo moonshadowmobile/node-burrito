@@ -36,7 +36,10 @@ var traverse = require('traverse');
 var vm = require('vm');
 
 var burrito = module.exports = function (code, cb) {
-    var ast = parse(code.toString(), false, true);
+    var ast = Array.isArray(code)
+        ? code // already an ast
+        : parse(code.toString(), false, true)
+    ;
     
     var ast_ = traverse(ast).map(function mapper () {
         wrapNode(this, cb);
