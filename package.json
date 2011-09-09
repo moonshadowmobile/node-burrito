@@ -1,7 +1,7 @@
 {
     "name" : "burrito",
     "description" : "Wrap up expressions with a trace function while walking the AST with rice and beans on the side",
-    "version" : "0.2.8",
+    "version" : "0.2.9",
     "repository" : {
         "type" : "git",
         "url" : "git://github.com/substack/node-burrito.git"
@@ -26,7 +26,7 @@
     },
     "dependencies" : {
         "traverse" : ">=0.5.1 <0.6",
-        "uglify-js" : "1.0.4"
+        "uglify-js" : "1.0.7"
     },
     "devDependencies" : {
         "expresso" : "=0.7.x"
