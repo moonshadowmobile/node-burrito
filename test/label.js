@@ -72,3 +72,15 @@ exports.anonFunctionLabel = function () {
     
     assert.equal(times, 1);
 };
+
+exports.dotCallLabel = function () {
+    var times = 0;
+    var src = burrito('process.nextTick(fn)', function (node) {
+        if (node.name === 'call') {
+            assert.equal(node.label(), 'nextTick');
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
