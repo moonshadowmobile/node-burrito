@@ -182,6 +182,9 @@ burrito.label = function (node) {
         else if (node.value[0] && typeof node.value[0][1] === 'string') {
             return node.value[0][1];
         }
+        else if (node.value[0][0] === 'dot') {
+            return node.value[0][node.value[0].length - 1];
+        }
         else {
             return null;
         }
