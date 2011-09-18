@@ -85,11 +85,23 @@ exports.dotCallLabel = function () {
     assert.equal(times, 1);
 };
 
-exports.tripleDot = function () {
+exports.tripleDotLabel = function () {
     var times = 0;
     var src = burrito('a.b.c(fn)', function (node) {
         if (node.name === 'call') {
             assert.equal(node.label(), 'c');
+            times ++;
+        }
+    });
+    
+    assert.equal(times, 1);
+};
+
+exports.exprLabel = function () {
+    var times = 0;
+    var src = burrito('a.b[x+1](fn)', function (node) {
+        if (node.name === 'call') {
+            assert.ok(node.label() === null);
             times ++;
         }
     });
